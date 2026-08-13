@@ -1,0 +1,123 @@
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full Admin Home Page */
+
+.admin-home-page {
+    width: 100%;
+    height: 100vh;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    gap: 3px;
+
+    background: #1c1c1c;
+
+    overflow: hidden;
+}
+
+/* All Buttons */
+
+.admin-home-page button {
+    border: none;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 18px;
+
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+    color: #f5f1e8;
+
+    cursor: pointer;
+
+    transition: all 0.35s ease;
+}
+
+/* Icons */
+
+.admin-icon {
+    font-size: 65px;
+}
+
+/* Button Text */
+
+.admin-home-page button span:last-child {
+    font-size: 27px;
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+}
+
+/* Create Package */
+
+.create-package {
+    background: #34495e;
+}
+
+/* Manage Package */
+
+.manage-package {
+    background: #6b705c;
+}
+
+/* Customer Bookings */
+
+.customer-bookings {
+    background: #3d5a5b;
+}
+
+/* Add New Resource */
+
+.add-resource {
+    background: #8a7967;
+}
+
+/* Hover */
+
+.admin-home-page button:hover {
+    transform: scale(0.985);
+
+    filter: brightness(1.12);
+
+    box-shadow:
+        inset 0 0 0 2px rgba(255, 255, 255, 0.25);
+}
+
+/* Click */
+
+.admin-home-page button:active {
+    transform: scale(0.97);
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .admin-home-page {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+
+        overflow-y: auto;
+    }
+
+    .admin-icon {
+        font-size: 50px;
+    }
+
+    .admin-home-page button span:last-child {
+        font-size: 21px;
+    }
+}

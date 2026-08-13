@@ -1,0 +1,150 @@
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Registration Page */
+
+.registration-container {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+    overflow: hidden;
+}
+
+/* Registration Card */
+
+.registration-card {
+    width: 380px;
+    padding: 25px 30px;
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+
+    border-radius: 18px;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+
+    color: white;
+}
+
+/* Heading */
+
+.registration {
+    text-align: center;
+
+    margin-bottom: 22px;
+
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Form Groups */
+
+.name-container,
+.email-container,
+.phone-container,
+.password-container {
+    margin-bottom: 14px;
+}
+
+/* Labels */
+
+.registration-form label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Inputs */
+
+.registration-form input {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    border: none;
+    outline: none;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+
+    background: rgba(255, 255, 255, 0.2);
+
+    color: white;
+
+    transition: 0.3s;
+}
+
+/* Placeholder */
+
+.registration-form input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Input Focus */
+
+.registration-form input:focus {
+    background: rgba(255, 255, 255, 0.3);
+
+    box-shadow: 0 0 10px #4fc3f7;
+}
+
+/* Register Button */
+
+.register-button {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 4px;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.register-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 7px 18px rgba(0, 114, 255, 0.4);
+}
+
+.register-button:active {
+    transform: scale(0.98);
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+    .registration-card {
+        width: 90%;
+        padding: 22px;
+    }
+}

@@ -1,0 +1,170 @@
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full Page */
+
+.admin-login-container {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        135deg,
+        #1c2526,
+        #263638,
+        #344b4d
+    );
+
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+    overflow: hidden;
+}
+
+/* Admin Login Card */
+
+.admin-login-card {
+    width: 380px;
+    padding: 30px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 20px;
+
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+
+    color: #f5f1e8;
+}
+
+/* Heading */
+
+.admin-login {
+    text-align: center;
+
+    margin-bottom: 28px;
+
+    font-size: 2rem;
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+}
+
+/* Form Groups */
+
+.email-container,
+.password-container {
+    margin-bottom: 18px;
+}
+
+/* Labels */
+
+.admin-login-form label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #f5f1e8;
+}
+
+/* Inputs */
+
+.admin-login-form input {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    outline: none;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    color: #ffffff;
+
+    transition: all 0.3s ease;
+}
+
+/* Placeholder */
+
+.admin-login-form input::placeholder {
+    color: rgba(245, 241, 232, 0.6);
+}
+
+/* Input Focus */
+
+.admin-login-form input:focus {
+    background: rgba(255, 255, 255, 0.16);
+
+    border-color: rgba(245, 241, 232, 0.5);
+
+    box-shadow: 0 0 12px rgba(245, 241, 232, 0.12);
+}
+
+/* Admin Login Button */
+
+.admin-login-button {
+    width: 100%;
+
+    padding: 13px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #3d5a5b;
+
+    color: #f5f1e8;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+
+.admin-login-button:hover {
+    background: #4b6b6c;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(61, 90, 91, 0.35);
+}
+
+/* Click */
+
+.admin-login-button:active {
+    transform: scale(0.98);
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+    .admin-login-card {
+        width: 90%;
+        padding: 25px;
+    }
+}
