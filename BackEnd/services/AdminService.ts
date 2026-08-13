@@ -1,17 +1,35 @@
 import Admin from "../models/Admin";
+import { AdminEmailLOgin,AdminPhoneLogin } from "../patterns/Strategy";
 
 class AdminService {
-    adminLogin(email:String,password:String,callback:Function){
-        const admin = new Admin("","",email,password);
-        admin.adminLogin((err: Error | null, loggedInAdmin: Admin | null) => {
+    login(medium:String,password:String,strategy:string,callback:Function){
+        let loginStrategy: AdminEmailLOgin | AdminPhoneLogin;
+        if(strategy==="phone"){
+            loginStrategy = new AdminPhoneLogin();
+            const admin = new Admin("",medium,"",password,loginStrategy);
+            admin.login((err: Error | null, loggedInAdmin: Admin | null) => {
 
-            if (err) {
-                callback(err, null);
-                return;
-            }
+                if (err) {
+                    callback(err, null);
+                    return;
+                }
 
-            callback(null, loggedInAdmin);
-        });
+                callback(null, loggedInAdmin);
+            });
+        }else{
+            loginStrategy = new AdminEmailLOgin();
+            const admin = new Admin("","",medium,password,loginStrategy);
+            admin.login((err: Error | null, loggedInAdmin: Admin | null) => {
+
+                if (err) {
+                    callback(err, null);
+                    return;
+                }
+
+                callback(null, loggedInAdmin);
+            });
+        }
+        
     }
 }
 

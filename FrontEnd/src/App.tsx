@@ -5,6 +5,10 @@ import Home from "./Home";
 import Enquiry from "./Enquiry";
 import AdminLogin from "./AdminLogin";
 import AdminHome from "./AdminHome";
+import PhoneLogin from "./PhoneLogin";
+import LoginEnquiry from "./LoginEnquiry";
+import AdminEnquiry from "./AdminEnquiry";
+import AdminPhoneLogin from "./AdminPhoneLogin";
 
 function App() {
 
@@ -17,6 +21,10 @@ function App() {
              <Route path="/Login" element={<Login/>}/>
              <Route path="/AdminLogin" element={<AdminLogin/>}/>
              <Route path="/AdminHome" element={<AdminHome/>}/>
+             <Route path="/PhoneLogin" element={<PhoneLogin/>}/>
+             <Route path="/LoginEnquiry" element={<LoginEnquiry/>}/>
+             <Route path="/AdminEnquiry" element={<AdminEnquiry/>}/>
+             <Route path="/AdminPhoneLogin" element={<AdminPhoneLogin/>}/>
           </Routes>
     </BrowserRouter>
   );

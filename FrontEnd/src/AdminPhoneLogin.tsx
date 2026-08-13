@@ -2,17 +2,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/AdminLogin.css";
 
-function AdminLogin() {
+function AdminPhoneLogin() {
 
-    const [email, setEmail] = useState<string>("");
+    const [phone, setPhone] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const strategy:string = "email";
+    const strategy:string = "phone";
 
     const navigate = useNavigate();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const medium:string = email;
+        const medium:string = phone;
 
         const response = await fetch("http://localhost:8081/admin-login", {
             // React is calling the REST API
@@ -31,7 +31,7 @@ function AdminLogin() {
 
         alert(result.message);
 
-        setEmail("");
+        setPhone("");
         setPassword("");
 
         if (result.message === "Login successful") {
@@ -53,14 +53,14 @@ function AdminLogin() {
 
                     <div className="email-container">
 
-                        <label>Email</label>
+                        <label>Phone</label>
                         <br />
 
                         <input
-                            type="email"
-                            placeholder="Enter admin email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="tel"
+                            placeholder="Enter admin phone number"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
                             required
                         />
 
@@ -96,4 +96,4 @@ function AdminLogin() {
     );
 }
 
-export default AdminLogin;
+export default AdminPhoneLogin;

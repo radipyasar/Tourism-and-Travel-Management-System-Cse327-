@@ -1,8 +1,10 @@
 import User from "../models/User";
+import {Login,EmailLogin,PhoneLogin} from "../patterns/Strategy";
 
 class GuestService {
     register(name:String,phone:String,email:String,password:String,callback:Function){
-        const user = new User(name,phone,email,password);
+        const start = new EmailLogin();
+        const user = new User(name,phone,email,password,start);
          user.register((err: Error | null, result: any) => {
 
             if (err) {
@@ -13,9 +15,12 @@ class GuestService {
             callback(null, result);
         });
     }
-    login(email:String,password:String,callback:Function){
-       const user = new User("","",email,password);
-        user.login((err: Error | null, loggedInUser: User | null) => {
+    login(medium:String,password:String,strategy:String,callback:Function){
+        let loginStrategy:EmailLogin | PhoneLogin;
+        if(strategy==="phone"){
+            loginStrategy = new PhoneLogin();
+            const user: User = new User("",medium,"",password,loginStrategy);
+            user.login((err: Error | null, loggedInUser: User | null) => {
 
             if (err) {
                 callback(err, null);
@@ -23,7 +28,21 @@ class GuestService {
             }
 
             callback(null, loggedInUser);
-        });
+          });
+        }else{
+            loginStrategy = new EmailLogin();
+            const user: User = new User("","",medium,password,loginStrategy);
+            user.login((err: Error | null, loggedInUser: User | null) => {
+
+            if (err) {
+                callback(err, null);
+                return;
+            }
+
+            callback(null, loggedInUser);
+          });
+        }
+        
     }
 }
 

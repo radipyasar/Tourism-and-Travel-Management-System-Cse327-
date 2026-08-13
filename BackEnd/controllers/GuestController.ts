@@ -17,9 +17,9 @@ class GuestController {
         })
     }
     login(req:Request,res:Response){
-        const {email,password} = req.body;//object destructuting 
+        const {medium,password,strategy} = req.body;//object destructuting 
 
-        GuestService.login(email,password,(err:Error,user:any) => {
+        GuestService.login(medium,password,strategy,(err:Error,user:any) => {
             if(err){
                 res.status(500).json({ message: "Login failed" });
                 return;

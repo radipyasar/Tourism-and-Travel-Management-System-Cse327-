@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./styles/Enquiry.css";
 
-function Enquiry() {
+function AdminEnquiry() {
 
     const navigate = useNavigate();
 
@@ -12,22 +12,22 @@ function Enquiry() {
 
                 <h1>Travel Planner App</h1>
 
-                <p>Please select your login type</p>
+                <p>Please select your login method</p>
 
                 <div className="enquiry-buttons">
 
                     <button
                         className="customer-login"
-                        onClick={() => navigate("/LoginEnquiry")}
+                        onClick={() => navigate("/AdminLogin")}
                     >
-                        Customer Login
+                        Email Login
                     </button>
 
                     <button
                         className="admin-login"
-                        onClick={() => navigate("/AdminEnquiry")}
+                        onClick={() => navigate("/AdminPhoneLogin")}
                     >
-                        Admin Login
+                        Phone Login
                     </button>
 
                 </div>
@@ -38,4 +38,4 @@ function Enquiry() {
     );
 }
 
-export default Enquiry;
+export default AdminEnquiry;

@@ -2,18 +2,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/Login.css";
 
-function Login() {
+function PhoneLogin() {
 
-    const [email, setEmail] = useState<string>("");
+    const [phone, setPhone] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const strategy = "email";
+    const strategy = "phone";
 
     const navigate = useNavigate();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const medium:string = email;
-
+        const medium: string = phone;
          const response = await fetch("http://localhost:8081/login", {
             //above in fetch react is calling the rest api
             method: "POST",
@@ -30,7 +29,7 @@ function Login() {
         });
         const result = await response.json();
         alert(result.message);
-        setEmail("");
+        setPhone("");
         setPassword("");
         if(result.message==="Login successful"){
             navigate("/Home");
@@ -49,13 +48,13 @@ function Login() {
             <form onSubmit={handleSubmit} className="login-form">
 
                 <div className="email-container">
-                    <label>Email</label>
+                    <label>Phone</label>
                     <br />
                     <input
-                        type="email"
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        type="tel"
+                        placeholder="Enter your Phone Number"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
                         required
                     />
                 </div>
@@ -95,4 +94,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default PhoneLogin;
