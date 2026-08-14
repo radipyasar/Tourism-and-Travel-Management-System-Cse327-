@@ -1,8 +1,10 @@
 import express, {Express,Request,Response} from "express";
 import cors from "cors";
-import AdminController from "./controllers/AdminController";
 import UserRoutes from "./routes/UserRoutes";
 import AdminRoutes from "./routes/AdminRoutes";
+import HotelRoutes from "./routes/HotelRoutes";
+import DestinationRoutes from "./routes/DestinationRoutes";
+import TransportationRoutes from "./routes/TransportationRoutes";
 
 const app: Express = express();
 
@@ -17,6 +19,12 @@ app.get("/", (req: Request,res: Response) => {
 app.use("/",UserRoutes);
 
 app.use("/",AdminRoutes);
+
+app.use("/",HotelRoutes);
+
+app.use("/",DestinationRoutes);
+
+app.use("/",TransportationRoutes);
 
 app.listen(8081,() => {
     console.log("Listening");

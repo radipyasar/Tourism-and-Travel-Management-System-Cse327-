@@ -9,6 +9,10 @@ import PhoneLogin from "./PhoneLogin";
 import LoginEnquiry from "./LoginEnquiry";
 import AdminEnquiry from "./AdminEnquiry";
 import AdminPhoneLogin from "./AdminPhoneLogin";
+import ResourceEnquiry from "./ResourceEnquiry";
+import AddHotel from "./AddHotel";
+import AddDestination from "./AddDestination";
+import AddTransportation from "./AddTransportation";
 
 function App() {
 
@@ -25,6 +29,10 @@ function App() {
              <Route path="/LoginEnquiry" element={<LoginEnquiry/>}/>
              <Route path="/AdminEnquiry" element={<AdminEnquiry/>}/>
              <Route path="/AdminPhoneLogin" element={<AdminPhoneLogin/>}/>
+             <Route path="/ResourceEnquiry" element={<ResourceEnquiry/>}/>
+             <Route path="/AddHotel" element={<AddHotel/>}/>
+             <Route path="/AddDestination" element={<AddDestination/>}/>
+             <Route path="/AddTransportation" element={<AddTransportation/>}/>
           </Routes>
     </BrowserRouter>
   );

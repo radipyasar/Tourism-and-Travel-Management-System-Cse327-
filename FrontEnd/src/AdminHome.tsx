@@ -34,7 +34,7 @@ function AdminHome() {
 
             <button
                 className="add-resource"
-                onClick={() => navigate("/add-resource")}
+                onClick={() => navigate("/ResourceEnquiry")}
             >
                 <span className="admin-icon">＋</span>
                 <span>Add New Resource</span>
