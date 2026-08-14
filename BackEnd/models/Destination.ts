@@ -20,6 +20,18 @@ export class Destination {
     public getDescription(){
         return this.description;
     }
+    static getAllCities(callback:Function){
+        const db = Database.getInstance().getConnection();
+        const sql:string = "SELECT city FROM destination";
+        db.query(sql,(err,result) => {
+            if(err){
+                 callback(err,null);
+                 return;
+              }
+            const rows = result as RowDataPacket[];
+            callback(null, rows.map((row) => row.city as string));
+        })
+    }
     addDestination(callback:Function){
         const db = Database.getInstance().getConnection();
         const sql:string = "INSERT INTO destination(city,country,description) VALUES (?,?,?)";

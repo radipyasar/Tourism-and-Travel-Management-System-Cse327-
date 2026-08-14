@@ -10,7 +10,7 @@ function AdminHome() {
 
             <button
                 className="create-package"
-                onClick={() => navigate("/create-package")}
+                onClick={() => navigate("/CreatePackage")}
             >
                 <span className="admin-icon">✈</span>
                 <span>Create Package</span>

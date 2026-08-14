@@ -20,6 +20,30 @@ export class Hotel {
     public getCostPerNight(){
         return this.costPerNight;
     }
+    static getAllHotelNames(callback:Function){
+        const db = Database.getInstance().getConnection();
+        const sql:string = "SELECT hotel_name FROM hotel";
+        db.query(sql,(err,result) => {
+            if(err){
+                 callback(err,null);
+                 return;
+              }
+            const rows = result as RowDataPacket[];
+            callback(null, rows.map((row) => row.hotel_name as string));
+        })
+    }
+    static getCostPerNight(hotelName:string,callback:Function){
+        const db = Database.getInstance().getConnection();
+        const sql:string = "SELECT cost_per_night FROM hotel WHERE hotel_name = ?";
+        db.query(sql,[hotelName],(err,result) => {
+            if(err){
+                 callback(err,null);
+                 return;
+              }
+            const rows = result as RowDataPacket[];
+            callback(null, rows.length > 0 ? Number(rows[0]!.cost_per_night) : null);
+        })
+    }
     addHotel(callback:Function){
         const db = Database.getInstance().getConnection();
         const sql:string = "INSERT INTO hotel(hotel_name,city,cost_per_night) VALUES (?,?,?)";

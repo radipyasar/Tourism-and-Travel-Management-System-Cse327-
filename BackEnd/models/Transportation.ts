@@ -20,6 +20,30 @@ export class Transportation {
     public getCost(){
         return this.cost;
     }
+    static getAllTypes(callback:Function){
+        const db = Database.getInstance().getConnection();
+        const sql:string = "SELECT DISTINCT type FROM transportation";
+        db.query(sql,(err,result) => {
+            if(err){
+                 callback(err,null);
+                 return;
+              }
+            const rows = result as RowDataPacket[];
+            callback(null, rows.map((row) => row.type as string));
+        })
+    }
+    static getCostByType(type:string,callback:Function){
+        const db = Database.getInstance().getConnection();
+        const sql:string = "SELECT cost FROM transportation WHERE type = ?";
+        db.query(sql,[type],(err,result) => {
+            if(err){
+                 callback(err,null);
+                 return;
+              }
+            const rows = result as RowDataPacket[];
+            callback(null, rows.length > 0 ? Number(rows[0]!.cost) : null);
+        })
+    }
     addTransportation(callback:Function){
         const db = Database.getInstance().getConnection();
         const sql:string = "INSERT INTO transportation(type,company,cost) VALUES (?,?,?)";

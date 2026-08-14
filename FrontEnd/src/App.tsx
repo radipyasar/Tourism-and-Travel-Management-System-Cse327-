@@ -13,6 +13,7 @@ import ResourceEnquiry from "./ResourceEnquiry";
 import AddHotel from "./AddHotel";
 import AddDestination from "./AddDestination";
 import AddTransportation from "./AddTransportation";
+import CreatePackage from "./CreatePackage";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
              <Route path="/AddHotel" element={<AddHotel/>}/>
              <Route path="/AddDestination" element={<AddDestination/>}/>
              <Route path="/AddTransportation" element={<AddTransportation/>}/>
+             <Route path="/CreatePackage" element={<CreatePackage/>}/>
           </Routes>
     </BrowserRouter>
   );
