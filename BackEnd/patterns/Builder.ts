@@ -5,6 +5,7 @@ export class PackageBuilder {
     private destination:string = "";
     private hotel:string = "";
     private transportation:string = "";
+    private company:string = "";
     private days:number = 0;
     private costPerNight:number = 0;
     private travelCost:number = 0;
@@ -19,6 +20,10 @@ export class PackageBuilder {
     }
     public setTransportation(transportation:string):PackageBuilder{
         this.transportation=transportation;
+        return this;
+    }
+    public setCompany(company:string):PackageBuilder{
+        this.company=company;
         return this;
     }
     public setDays(days:number):PackageBuilder{
@@ -38,6 +43,6 @@ export class PackageBuilder {
         return (this.costPerNight * this.days) + (this.travelCost * 2);
     }
     public build():Package{
-        return new Package(this.destination,this.hotel,this.transportation,this.days,this.calculateCost());
+        return new Package(this.destination,this.hotel,this.transportation,this.company,this.days,this.calculateCost());
     }
 }

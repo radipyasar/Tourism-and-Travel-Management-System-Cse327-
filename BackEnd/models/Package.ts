@@ -4,13 +4,15 @@ export class Package {
     private destination:string;
     private hotel:string;
     private transportation:string;
+    private company:string;
     private days:number;
     private cost:number;
 
-    constructor(destination:string,hotel:string,transportation:string,days:number,cost:number){
+    constructor(destination:string,hotel:string,transportation:string,company:string,days:number,cost:number){
         this.destination=destination;
         this.hotel=hotel;
         this.transportation=transportation;
+        this.company=company;
         this.days=days;
         this.cost=cost;
     }
@@ -23,6 +25,9 @@ export class Package {
     public getTransportation(){
         return this.transportation;
     }
+    public getCompany(){
+        return this.company;
+    }
     public getDays(){
         return this.days;
     }
@@ -31,8 +36,8 @@ export class Package {
     }
     addPackage(callback:Function){
         const db = Database.getInstance().getConnection();
-        const sql:string = "INSERT INTO package(destination,hotel,transportation,days,cost) VALUES (?,?,?,?,?)";
-        db.query(sql,[this.destination,this.hotel,this.transportation,this.days,this.cost],(err,result) => {
+        const sql:string = "INSERT INTO package(destination,hotel,transportation,company,days,cost) VALUES (?,?,?,?,?,?)";
+        db.query(sql,[this.destination,this.hotel,this.transportation,this.company,this.days,this.cost],(err,result) => {
             if(err){
                  callback(err,null);
                  return;

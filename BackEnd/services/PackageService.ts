@@ -4,9 +4,9 @@ import { Hotel } from "../models/Hotel";
 import { Transportation } from "../models/Transportation";
 
 class PackageService {
-    createPackage(destination:string,hotel:string,transportation:string,days:number,callback:Function){
+    createPackage(destination:string,hotel:string,transportation:string,company:string,days:number,callback:Function){
 
-        if(!destination || !hotel || !transportation || !days){
+        if(!destination || !hotel || !transportation || !company || !days){
             callback(new Error("All fields are required"),null);
             return;
         }
@@ -23,7 +23,7 @@ class PackageService {
                 return;
             }
 
-            Transportation.getCostByType(transportation,(err: Error | null, travelCost: number | null) => {
+            Transportation.getCostByType(transportation,company,(err: Error | null, travelCost: number | null) => {
 
                 if (err) {
                     callback(err, null);
@@ -39,6 +39,7 @@ class PackageService {
                     .setDestination(destination)
                     .setHotel(hotel)
                     .setTransportation(transportation)
+                    .setCompany(company)
                     .setDays(days)
                     .setCostPerNight(costPerNight)
                     .setTravelCost(travelCost)
@@ -72,7 +73,7 @@ class PackageService {
                     return;
                 }
 
-                Transportation.getAllTypes((err: Error | null, transportations: string[]) => {
+                Transportation.getAllTypes((err: Error | null, transportations: {type:string,company:string}[]) => {
 
                     if (err) {
                         callback(err, null);

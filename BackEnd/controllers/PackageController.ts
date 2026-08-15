@@ -3,8 +3,8 @@ import express, {Express,Request,Response} from "express";
 
 class PackageController {
     createPackage(req:Request,res:Response){
-        const {destination,hotel,transportation,days} = req.body;
-        PackageService.createPackage(destination,hotel,transportation,days,(err:Error,result:any) => {
+        const {destination,hotel,transportation,company,days} = req.body;
+        PackageService.createPackage(destination,hotel,transportation,company,days,(err:Error,result:any) => {
             if(err){
                 res.status(500).json({
                     message: "Package creation failed"

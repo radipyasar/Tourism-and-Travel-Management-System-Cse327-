@@ -8,11 +8,11 @@ function CreatePackage() {
 
     const [cities, setCities] = useState<string[]>([]);
     const [hotels, setHotels] = useState<string[]>([]);
-    const [transportations, setTransportations] = useState<string[]>([]);
+    const [transportations, setTransportations] = useState<{ type: string; company: string }[]>([]);
 
     const [destination, setDestination] = useState("");
     const [hotel, setHotel] = useState("");
-    const [transportation, setTransportation] = useState("");
+    const [transportIndex, setTransportIndex] = useState("");
     const [days, setDays] = useState("");
 
     useEffect(() => {
@@ -41,6 +41,13 @@ function CreatePackage() {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
+        const selectedTransport = transportations[Number(transportIndex)];
+
+        if (!selectedTransport) {
+            alert("Please select a transportation");
+            return;
+        }
+
         try {
 
             const response = await fetch("http://localhost:8081/package", {
@@ -51,7 +58,8 @@ function CreatePackage() {
                 body: JSON.stringify({
                     destination,
                     hotel,
-                    transportation,
+                    transportation: selectedTransport.type,
+                    company: selectedTransport.company,
                     days: Number(days)
                 })
             });
@@ -63,7 +71,7 @@ function CreatePackage() {
 
                 setDestination("");
                 setHotel("");
-                setTransportation("");
+                setTransportIndex("");
                 setDays("");
 
                 navigate("/AdminHome");
@@ -130,14 +138,16 @@ function CreatePackage() {
                         <label>Transportation</label>
 
                         <select
-                            value={transportation}
-                            onChange={(e) => setTransportation(e.target.value)}
+                            value={transportIndex}
+                            onChange={(e) => setTransportIndex(e.target.value)}
                             required
                         >
                             <option value="">Select transportation</option>
 
-                            {transportations.map((type) => (
-                                <option key={type} value={type}>{type}</option>
+                            {transportations.map((transport, index) => (
+                                <option key={index} value={index}>
+                                    {transport.type} ({transport.company})
+                                </option>
                             ))}
                         </select>
                     </div>

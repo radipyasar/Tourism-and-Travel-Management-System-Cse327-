@@ -22,20 +22,20 @@ export class Transportation {
     }
     static getAllTypes(callback:Function){
         const db = Database.getInstance().getConnection();
-        const sql:string = "SELECT DISTINCT type FROM transportation";
+        const sql:string = "SELECT type,company FROM transportation ORDER BY type,company";
         db.query(sql,(err,result) => {
             if(err){
                  callback(err,null);
                  return;
               }
             const rows = result as RowDataPacket[];
-            callback(null, rows.map((row) => row.type as string));
+            callback(null, rows.map((row) => ({type : row.type as string, company : row.company as string})));
         })
     }
-    static getCostByType(type:string,callback:Function){
+    static getCostByType(type:string,company:string,callback:Function){
         const db = Database.getInstance().getConnection();
-        const sql:string = "SELECT cost FROM transportation WHERE type = ?";
-        db.query(sql,[type],(err,result) => {
+        const sql:string = "SELECT cost FROM transportation WHERE type = ? AND company = ?";
+        db.query(sql,[type,company],(err,result) => {
             if(err){
                  callback(err,null);
                  return;
