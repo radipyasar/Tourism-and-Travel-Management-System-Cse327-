@@ -38,7 +38,7 @@ export class PhoneLogin extends Login{
 
 //for admin
 
-export class AdminEmailLOgin {
+export class AdminEmailLOgin extends Login{
      login(name:String,phone:String,email:String,password:String,callback:Function): void {
         const db = Database.getInstance().getConnection();
         const sql:string = "SELECT admin_id,name,email FROM admin WHERE email = ? AND password = ?";
@@ -53,7 +53,7 @@ export class AdminEmailLOgin {
     }
 }
 
-export class AdminPhoneLogin {
+export class AdminPhoneLogin extends Login{
     login(name:String,phone:String,email:String,password:String,callback:Function): void {
         const db = Database.getInstance().getConnection();
         const sql:string = "SELECT admin_id,name,phone FROM admin WHERE phone = ? AND password = ?";

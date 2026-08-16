@@ -16,6 +16,32 @@ class GuestController {
             })
         })
     }
+    getProfile(req:Request,res:Response){
+        const user_id = req.params.id;
+        GuestService.getProfile(Number(user_id),(err:Error,user:any) => {
+            if(err){
+                res.status(500).json({ message: "Failed to fetch profile" });
+                return;
+            }
+            if(!user){
+                res.status(404).json({ message: "User not found" });
+                return;
+            }
+            res.json(user);
+        })
+    }
+
+    updateProfile(req:Request,res:Response){
+        const user_id = req.params.id;
+        const {name,phone,email} = req.body;
+        GuestService.updateProfile(Number(user_id),name,phone,email,(err:Error) => {
+            if(err){
+                res.status(500).json({ message: "Update failed" });
+                return;
+            }
+            res.json({ message: "Profile updated" });
+        })
+    }
     login(req:Request,res:Response){
         const {medium,password,strategy} = req.body;//object destructuting 
 
@@ -28,7 +54,7 @@ class GuestController {
                 res.status(401).json({ message: "Invalid email or password" });
                 return;
             }
-            res.json({ message: "Login successful"});
+            res.json({ message: "Login successful", user_id: user.user_id });
         })
     }
 }

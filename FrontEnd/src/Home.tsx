@@ -1,6 +1,9 @@
+import {  useNavigate } from "react-router-dom";
 import "./styles/Home.css";
 
+
 function Home() {
+    const navigate = useNavigate();
 
     return (
         <div className="home-page">
@@ -15,7 +18,7 @@ function Home() {
                 <span>Package Reviews</span>
             </button>
 
-            <button className="edit-profile">
+            <button className="edit-profile" onClick={() => navigate("/EditProfile")}>
                 👤
                 <span>Edit Profile</span>
             </button>

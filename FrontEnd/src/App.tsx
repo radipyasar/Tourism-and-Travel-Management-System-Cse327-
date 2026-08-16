@@ -14,6 +14,7 @@ import AddHotel from "./AddHotel";
 import AddDestination from "./AddDestination";
 import AddTransportation from "./AddTransportation";
 import CreatePackage from "./CreatePackage";
+import EditProfile from "./EditProfile";
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
              <Route path="/AddDestination" element={<AddDestination/>}/>
              <Route path="/AddTransportation" element={<AddTransportation/>}/>
              <Route path="/CreatePackage" element={<CreatePackage/>}/>
+             <Route path="/EditProfile" element={<EditProfile/>}/>
           </Routes>
     </BrowserRouter>
   );

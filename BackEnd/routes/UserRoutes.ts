@@ -7,6 +7,14 @@ router.post("/users",(req:Request,res:Response) => {
     GuestController.register(req,res);
 })
 
+router.get("/users/:id",(req:Request,res:Response) => {
+    GuestController.getProfile(req,res);
+})
+
+router.put("/users/:id",(req:Request,res:Response) => {
+    GuestController.updateProfile(req,res);
+})
+
 router.post("/login",(req:Request,res:Response) => {
     GuestController.login(req,res);
 })

@@ -50,6 +50,30 @@ class User {
              callback(null,result);
         })
     }
+    static getById(user_id:Number,callback:Function):void{
+        const db = Database.getInstance().getConnection();
+        const sql:string = "SELECT user_id,name,phone,email FROM users WHERE user_id = ?";
+        db.query(sql,[user_id],(err,result) => {
+            if(err){
+                callback(err,null);
+                return;
+            }
+            const rows = result as RowDataPacket[];
+            callback(null, rows.length > 0 ? rows[0] : null);
+        })
+    }
+
+    static updateById(user_id:Number,name:String,phone:String,email:String,callback:Function):void{
+        const db = Database.getInstance().getConnection();
+        const sql:string = "UPDATE users SET name = ?, phone = ?, email = ? WHERE user_id = ?";
+        db.query(sql,[name,phone,email,user_id],(err,result) => {
+            if(err){
+                callback(err,null);
+                return;
+            }
+            callback(null,result);
+        })
+    }
     login(callback:Function):void{
         this.loginStrategy.login(this.name,this.phone,this.email,this.password,
             (err:QueryError|null,result:any) => {

@@ -33,6 +33,7 @@ function Login() {
         setEmail("");
         setPassword("");
         if(result.message==="Login successful"){
+            localStorage.setItem("user_id", result.user_id);
             navigate("/Home");
         }
         
