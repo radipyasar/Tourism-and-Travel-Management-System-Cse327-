@@ -32,6 +32,7 @@ export class Transportation {
             callback(null, rows.map((row) => ({type : row.type as string, company : row.company as string})));
         })
     }
+    // Needed for package creation
     static getCostByType(type:string,company:string,callback:Function){
         const db = Database.getInstance().getConnection();
         const sql:string = "SELECT cost FROM transportation WHERE type = ? AND company = ?";

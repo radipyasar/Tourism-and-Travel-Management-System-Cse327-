@@ -32,6 +32,7 @@ export class Hotel {
             callback(null, rows.map((row) => row.hotel_name as string));
         })
     }
+    //Needed for package creation
     static getCostPerNight(hotelName:string,callback:Function){
         const db = Database.getInstance().getConnection();
         const sql:string = "SELECT cost_per_night FROM hotel WHERE hotel_name = ?";
