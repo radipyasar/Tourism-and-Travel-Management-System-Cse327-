@@ -2,6 +2,7 @@ import { PackageBuilder } from "../patterns/Builder";
 import { Destination } from "../models/Destination";
 import { Hotel } from "../models/Hotel";
 import { Transportation } from "../models/Transportation";
+import { Package } from "../models/Package";
 
 class PackageService {
     createPackage(destination:string,hotel:string,transportation:string,company:string,days:number,callback:Function){
@@ -55,6 +56,15 @@ class PackageService {
                     callback(null, { cost: travelPackage.getCost() });
                 });
             });
+        });
+    }
+    getAllPackages(callback:Function){
+        Package.getAll((err: Error | null, packages: any[]) => {
+            if (err) {
+                callback(err, null);
+                return;
+            }
+            callback(null, packages);
         });
     }
 

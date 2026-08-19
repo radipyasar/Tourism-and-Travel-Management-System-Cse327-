@@ -1,0 +1,219 @@
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Page */
+
+.finalize-page {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px 0;
+
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card */
+
+.finalize-card {
+    width: 380px;
+
+    padding: 26px;
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 18px;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+
+    color: white;
+
+    animation: fadeUp 0.5s ease;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Heading */
+
+.finalize-heading {
+    text-align: center;
+
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+.finalize-subtext {
+    text-align: center;
+
+    margin-top: 4px;
+    margin-bottom: 22px;
+
+    font-size: 13px;
+
+    color: rgba(255, 255, 255, 0.75);
+}
+
+/* Fields */
+
+.finalize-field {
+    margin-bottom: 16px;
+}
+
+.finalize-form label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.finalize-form select {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    border: none;
+    outline: none;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+
+    background: rgba(255, 255, 255, 0.2);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.finalize-form select option {
+    background: #203a43;
+    color: white;
+}
+
+.finalize-form select:focus {
+    background: rgba(255, 255, 255, 0.3);
+
+    box-shadow: 0 0 10px #4fc3f7;
+}
+
+/* Total */
+
+.total-box {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 13px 16px;
+
+    margin-bottom: 16px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(0, 198, 255, 0.25);
+    border-radius: 12px;
+
+    font-size: 1.15rem;
+    font-weight: bold;
+
+    color: #4fc3f7;
+}
+
+/* Confirm Button */
+
+.confirm-button {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 4px;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.confirm-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 7px 18px rgba(0, 114, 255, 0.4);
+}
+
+.confirm-button:active {
+    transform: scale(0.98);
+}
+
+/* Back Button */
+
+.finalize-back-button {
+    width: 100%;
+
+    padding: 10px;
+
+    margin-top: 10px;
+
+    border: 2px solid #00c6ff;
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.finalize-back-button:hover {
+    background: #00c6ff;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 7px 18px rgba(0, 198, 255, 0.3);
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+    .finalize-card {
+        width: 90%;
+        padding: 22px 20px;
+    }
+}

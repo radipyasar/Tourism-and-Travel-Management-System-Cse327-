@@ -1,0 +1,215 @@
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Page */
+
+.packages-page {
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 30px 20px 40px;
+
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+    color: white;
+}
+
+/* Header */
+
+.packages-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.packages-heading {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.packages-subtext {
+    margin-top: 6px;
+
+    font-size: 14px;
+
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.packages-message {
+    text-align: center;
+
+    margin-top: 30px;
+
+    font-size: 15px;
+
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Grid */
+
+.packages-grid {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+    gap: 22px;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+}
+
+/* Card */
+
+.package-card {
+    padding: 22px 20px;
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+
+    display: flex;
+    flex-direction: column;
+
+    transition: 0.3s;
+
+    animation: fadeUp 0.5s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+    border-color: rgba(0, 198, 255, 0.5);
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Destination */
+
+.package-destination {
+    margin-bottom: 14px;
+
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* Details */
+
+.package-row {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 7px 0;
+
+    font-size: 13px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.package-row span {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.package-row strong {
+    text-align: right;
+}
+
+/* Cost */
+
+.package-cost {
+    margin: 16px 0 14px;
+
+    text-align: center;
+
+    font-size: 1.45rem;
+    font-weight: bold;
+
+    color: #4fc3f7;
+}
+
+/* Proceed Button */
+
+.proceed-button {
+    width: 100%;
+
+    padding: 11px;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.proceed-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 7px 18px rgba(0, 114, 255, 0.4);
+}
+
+.proceed-button:active {
+    transform: scale(0.98);
+}
+
+/* Back Button */
+
+.packages-back-button {
+    display: block;
+
+    width: 220px;
+
+    padding: 11px;
+
+    margin: 32px auto 0;
+
+    border: 2px solid #00c6ff;
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.packages-back-button:hover {
+    background: #00c6ff;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 7px 18px rgba(0, 198, 255, 0.3);
+}

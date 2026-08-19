@@ -1,4 +1,5 @@
 import Database from "../db";
+import { RowDataPacket } from "mysql2";
 
 export class Package {
     private destination:string;
@@ -33,6 +34,17 @@ export class Package {
     }
     public getCost(){
         return this.cost;
+    }
+    static getAll(callback:Function):void{
+        const db = Database.getInstance().getConnection();
+        const sql:string = "SELECT id,destination,hotel,transportation,company,days,cost FROM package";
+        db.query(sql,(err,result) => {
+            if(err){
+                callback(err,null);
+                return;
+            }
+            callback(null,result as RowDataPacket[]);
+        })
     }
     addPackage(callback:Function){
         const db = Database.getInstance().getConnection();

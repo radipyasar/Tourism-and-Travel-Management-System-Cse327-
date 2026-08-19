@@ -3,6 +3,10 @@ import PackageController from "../controllers/PackageController";
 
 const router = express.Router();
 
+router.get("/packages",(req:Request,res:Response) => {
+    PackageController.getAllPackages(req,res);
+})
+
 router.get("/package-options",(req:Request,res:Response) => {
     PackageController.getPackageOptions(req,res);
 })

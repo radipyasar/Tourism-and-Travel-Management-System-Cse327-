@@ -8,7 +8,7 @@ function Home() {
     return (
         <div className="home-page">
 
-            <button className="travel-packages">
+            <button className="travel-packages" onClick={() => navigate("/BookPackage")}>
                 ✈️
                 <span>Travel Packages</span>
             </button>

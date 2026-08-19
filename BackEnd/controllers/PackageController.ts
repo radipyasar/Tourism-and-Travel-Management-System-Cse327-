@@ -17,6 +17,17 @@ class PackageController {
             })
         })
     }
+    getAllPackages(req:Request,res:Response){
+        PackageService.getAllPackages((err:Error,result:any) => {
+            if(err){
+                res.status(500).json({
+                    message: "Could not load packages"
+                })
+                return
+            }
+            res.json(result);
+        })
+    }
 
     getPackageOptions(req:Request,res:Response){
         PackageService.getPackageOptions((err:Error,result:any) => {

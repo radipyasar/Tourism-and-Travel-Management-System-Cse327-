@@ -15,6 +15,8 @@ import AddDestination from "./AddDestination";
 import AddTransportation from "./AddTransportation";
 import CreatePackage from "./CreatePackage";
 import EditProfile from "./EditProfile";
+import BookPackage from "./BookPackage";
+import BookingFinalize from "./BookingFinalize";
 
 function App() {
 
@@ -37,6 +39,8 @@ function App() {
              <Route path="/AddTransportation" element={<AddTransportation/>}/>
              <Route path="/CreatePackage" element={<CreatePackage/>}/>
              <Route path="/EditProfile" element={<EditProfile/>}/>
+             <Route path="/BookPackage" element={<BookPackage/>}/>
+             <Route path="/BookingFinalize" element={<BookingFinalize/>}/>
           </Routes>
     </BrowserRouter>
   );

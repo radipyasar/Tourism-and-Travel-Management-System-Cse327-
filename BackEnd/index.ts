@@ -6,6 +6,7 @@ import HotelRoutes from "./routes/HotelRoutes";
 import DestinationRoutes from "./routes/DestinationRoutes";
 import TransportationRoutes from "./routes/TransportationRoutes";
 import PackageRoutes from "./routes/PackageRoute";
+import BookingRoutes from "./routes/BookingRoutes";
 
 const app: Express = express();
 
@@ -28,6 +29,8 @@ app.use("/",DestinationRoutes);
 app.use("/",TransportationRoutes);
 
 app.use("/",PackageRoutes);
+
+app.use("/",BookingRoutes);
 
 app.listen(8081,() => {
     console.log("Listening");
