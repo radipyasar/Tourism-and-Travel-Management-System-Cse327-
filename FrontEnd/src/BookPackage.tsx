@@ -29,7 +29,23 @@ function BookPackage() {
 
     }, []);
 
-    const handleProceed = (id: number, cost: number) => {
+    const handleProceed = async (id: number, cost: number) => {
+        const user_id = localStorage.getItem("user_id");
+        const response = await fetch("http://localhost:8081/booking-verification", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    user_id,
+                    id
+                })
+            });
+        const data = await response.json();
+        if(data[0].total_rows > 0){
+            alert("You already booked this package");
+            return
+        }
         localStorage.setItem("package_id", String(id));
         localStorage.setItem("Package_cost", String(cost))
         navigate("/BookingFinalize");

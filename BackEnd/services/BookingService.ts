@@ -40,6 +40,16 @@ class BookingService {
             });
         });
     }
+    verifyBooking(user_id:number,id:number,callback:Function){
+        const booking = new SimpleBooking(user_id,id,"",0);
+        booking.verifyBooking((err:Error,result:any)=> {
+            if(err){
+                callback(err,null);
+                return
+            }
+            callback(null,result);
+        })
+    }
 }
 
 export default new BookingService();

@@ -1,5 +1,6 @@
 import { Booking } from "../patterns/Decorator";
 import Database from "../db";
+import { RowDataPacket } from "mysql2";
 
 export class SimpleBooking implements Booking{
 
@@ -24,6 +25,18 @@ export class SimpleBooking implements Booking{
                 return;
             }
             callback(null,result);
+        })
+    }
+    verifyBooking(callback:Function){
+        const db = Database.getInstance().getConnection();
+        const sql:string = "SELECT COUNT(*) AS total_rows FROM booking WHERE user_id = ? AND id = ?";
+        db.query(sql,[this.user_id,this.id],(err,result) => {
+            if(err){
+                callback(err,null);
+                return
+            }
+            const rows = result as RowDataPacket[];
+            callback(null,rows);
         })
     }
 }

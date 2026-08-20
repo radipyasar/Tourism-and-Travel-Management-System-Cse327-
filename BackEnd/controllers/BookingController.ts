@@ -17,6 +17,18 @@ class BookingController {
             })
         })
     }
+    verifyBooking(req:Request,res:Response){
+        const {user_id,id} = req.body;
+        BookingService.verifyBooking(Number(user_id),Number(id),(err:Error,result:any) => {
+            if(err){
+                res.status(500).json({
+                    message: "Verification failed"
+                })
+                return
+            }
+            res.json(result);
+        })
+    }
 }
 
 export default new BookingController();
