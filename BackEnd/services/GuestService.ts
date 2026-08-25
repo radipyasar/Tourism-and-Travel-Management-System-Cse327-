@@ -1,5 +1,6 @@
 import User from "../models/User";
 import {Login,EmailLogin,PhoneLogin} from "../patterns/Strategy";
+import { adminSubject } from "../patterns/Observer";
 
 class GuestService {
     register(name:String,phone:String,email:String,password:String,callback:Function){
@@ -12,7 +13,17 @@ class GuestService {
                 return;
             }
 
-            callback(null, result);
+            //Observer pattern - the new user subscribes to the admin.
+            //result.insertId is the user_id that was just created.
+            adminSubject.addObserver(result.insertId,(err: Error | null) => {
+
+                if (err) {
+                    callback(err, null);
+                    return;
+                }
+
+                callback(null, result);
+            });
         });
     }
     getProfile(user_id:Number,callback:Function){

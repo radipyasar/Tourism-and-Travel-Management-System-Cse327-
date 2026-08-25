@@ -23,9 +23,9 @@ function Home() {
                 <span>Edit Profile</span>
             </button>
 
-            <button className="customer-care">
+            <button className="customer-care" onClick={() => navigate("/RecentUpdates")}>
                 💬
-                <span>Customer Care</span>
+                <span>Recent Updates</span>
             </button>
 
         </div>

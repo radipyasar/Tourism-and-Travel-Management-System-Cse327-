@@ -3,6 +3,7 @@ import { Destination } from "../models/Destination";
 import { Hotel } from "../models/Hotel";
 import { Transportation } from "../models/Transportation";
 import { Package } from "../models/Package";
+import { adminSubject } from "../patterns/Observer";
 
 class PackageService {
     createPackage(destination:string,hotel:string,transportation:string,company:string,days:number,callback:Function){
@@ -52,6 +53,9 @@ class PackageService {
                         callback(err, null);
                         return;
                     }
+
+                    //Observer pattern - package is saved, so notify every subscribed user.
+                    adminSubject.notify("New Package Added: " + destination);
 
                     callback(null, { cost: travelPackage.getCost() });
                 });

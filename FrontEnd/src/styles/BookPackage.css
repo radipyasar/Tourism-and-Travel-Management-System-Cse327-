@@ -1,4 +1,6 @@
-/* Reset */
+/* =========================
+   RESET
+========================= */
 
 * {
     margin: 0;
@@ -6,30 +8,65 @@
     box-sizing: border-box;
 }
 
-/* Page */
+
+/* =========================
+   HTML / BODY
+========================= */
+
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+
+/* =========================
+   PACKAGES PAGE
+========================= */
 
 .packages-page {
     width: 100%;
-    min-height: 100vh;
+
+    /* IMPORTANT */
+    height: 100vh;
 
     padding: 30px 20px 40px;
 
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background: linear-gradient(
+        135deg,
+        #0f2027,
+        #203a43,
+        #2c5364
+    );
 
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
     color: white;
+
+    /* IMPORTANT */
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-/* Header */
+
+/* =========================
+   HEADER
+========================= */
 
 .packages-header {
     text-align: center;
+
     margin-bottom: 28px;
 }
 
 .packages-heading {
     font-size: 2rem;
+
     font-weight: bold;
 }
 
@@ -41,6 +78,11 @@
     color: rgba(255, 255, 255, 0.75);
 }
 
+
+/* =========================
+   MESSAGE
+========================= */
+
 .packages-message {
     text-align: center;
 
@@ -51,34 +93,48 @@
     color: rgba(255, 255, 255, 0.8);
 }
 
-/* Grid */
+
+/* =========================
+   GRID
+========================= */
 
 .packages-grid {
     display: grid;
 
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns:
+        repeat(auto-fill, minmax(280px, 1fr));
 
     gap: 22px;
+
+    width: 100%;
 
     max-width: 1100px;
 
     margin: 0 auto;
 }
 
-/* Card */
+
+/* =========================
+   PACKAGE CARD
+========================= */
 
 .package-card {
     padding: 22px 20px;
 
     background: rgba(255, 255, 255, 0.12);
+
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 
     border: 1px solid rgba(255, 255, 255, 0.18);
+
     border-radius: 16px;
 
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.3);
 
     display: flex;
+
     flex-direction: column;
 
     transition: 0.3s;
@@ -86,56 +142,85 @@
     animation: fadeUp 0.5s ease;
 }
 
+
+/* =========================
+   CARD HOVER
+========================= */
+
 .package-card:hover {
     transform: translateY(-5px);
 
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4);
 
-    border-color: rgba(0, 198, 255, 0.5);
+    border-color:
+        rgba(0, 198, 255, 0.5);
 }
 
+
+/* =========================
+   ANIMATION
+========================= */
+
 @keyframes fadeUp {
+
     from {
         opacity: 0;
+
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
+
         transform: translateY(0);
     }
 }
 
-/* Destination */
+
+/* =========================
+   DESTINATION
+========================= */
 
 .package-destination {
     margin-bottom: 14px;
 
     font-size: 1.25rem;
+
     font-weight: bold;
 }
 
-/* Details */
+
+/* =========================
+   DETAILS
+========================= */
 
 .package-row {
     display: flex;
+
     justify-content: space-between;
 
     padding: 7px 0;
 
     font-size: 13px;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.12);
 }
 
 .package-row span {
-    color: rgba(255, 255, 255, 0.7);
+    color:
+        rgba(255, 255, 255, 0.7);
 }
 
 .package-row strong {
     text-align: right;
 }
 
-/* Cost */
+
+/* =========================
+   COST
+========================= */
 
 .package-cost {
     margin: 16px 0 14px;
@@ -143,12 +228,16 @@
     text-align: center;
 
     font-size: 1.45rem;
+
     font-weight: bold;
 
     color: #4fc3f7;
 }
 
-/* Proceed Button */
+
+/* =========================
+   PROCEED BUTTON
+========================= */
 
 .proceed-button {
     width: 100%;
@@ -156,12 +245,19 @@
     padding: 11px;
 
     border: none;
+
     border-radius: 10px;
 
     font-size: 14px;
+
     font-weight: bold;
 
-    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    background:
+        linear-gradient(
+            90deg,
+            #00c6ff,
+            #0072ff
+        );
 
     color: white;
 
@@ -173,14 +269,18 @@
 .proceed-button:hover {
     transform: translateY(-2px);
 
-    box-shadow: 0 7px 18px rgba(0, 114, 255, 0.4);
+    box-shadow:
+        0 7px 18px rgba(0, 114, 255, 0.4);
 }
 
 .proceed-button:active {
     transform: scale(0.98);
 }
 
-/* Back Button */
+
+/* =========================
+   BACK BUTTON
+========================= */
 
 .packages-back-button {
     display: block;
@@ -192,6 +292,7 @@
     margin: 32px auto 0;
 
     border: 2px solid #00c6ff;
+
     border-radius: 10px;
 
     background: transparent;
@@ -199,6 +300,7 @@
     color: white;
 
     font-size: 14px;
+
     font-weight: bold;
 
     cursor: pointer;
@@ -211,5 +313,93 @@
 
     transform: translateY(-2px);
 
-    box-shadow: 0 7px 18px rgba(0, 198, 255, 0.3);
+    box-shadow:
+        0 7px 18px rgba(0, 198, 255, 0.3);
+}
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+.packages-page::-webkit-scrollbar {
+    width: 10px;
+}
+
+.packages-page::-webkit-scrollbar-track {
+    background: #0f2027;
+}
+
+.packages-page::-webkit-scrollbar-thumb {
+    background: #4fc3f7;
+
+    border-radius: 10px;
+}
+
+.packages-page::-webkit-scrollbar-thumb:hover {
+    background: #00c6ff;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .packages-page {
+        padding: 25px 15px 35px;
+    }
+
+    .packages-heading {
+        font-size: 1.7rem;
+    }
+
+    .packages-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+    .packages-page {
+        padding: 20px 12px 30px;
+    }
+
+    .packages-heading {
+        font-size: 1.5rem;
+    }
+
+    .packages-subtext {
+        font-size: 13px;
+    }
+
+    .package-card {
+        padding: 18px 16px;
+    }
+
+    .package-destination {
+        font-size: 1.15rem;
+    }
+
+    .package-row {
+        font-size: 12px;
+    }
+
+    .package-cost {
+        font-size: 1.3rem;
+    }
+
+    .packages-back-button {
+        width: 100%;
+
+        max-width: 220px;
+    }
 }
