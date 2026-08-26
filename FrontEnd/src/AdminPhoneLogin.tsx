@@ -6,7 +6,7 @@ function AdminPhoneLogin() {
 
     const [phone, setPhone] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const strategy:string = "phone";
+    const strategy:string = "aphone";
 
     const navigate = useNavigate();
 

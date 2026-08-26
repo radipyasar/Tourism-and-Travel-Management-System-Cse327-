@@ -18,6 +18,8 @@ import EditProfile from "./EditProfile";
 import BookPackage from "./BookPackage";
 import BookingFinalize from "./BookingFinalize";
 import RecentUpdates from "./RecentUpdates";
+import MyBookings from "./MyBookings";
+import CustomerBookings from "./CustomerBookings";
 
 function App() {
 
@@ -43,6 +45,8 @@ function App() {
              <Route path="/BookPackage" element={<BookPackage/>}/>
              <Route path="/BookingFinalize" element={<BookingFinalize/>}/>
              <Route path="/RecentUpdates" element={<RecentUpdates/>}/>
+             <Route path="/MyBookings" element={<MyBookings/>}/>
+             <Route path="/customer-bookings" element={<CustomerBookings/>}/>
           </Routes>
     </BrowserRouter>
   );

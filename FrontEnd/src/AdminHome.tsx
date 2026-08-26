@@ -17,14 +17,6 @@ function AdminHome() {
             </button>
 
             <button
-                className="manage-package"
-                onClick={() => navigate("/manage-package")}
-            >
-                <span className="admin-icon">📦</span>
-                <span>Manage Package</span>
-            </button>
-
-            <button
                 className="customer-bookings"
                 onClick={() => navigate("/customer-bookings")}
             >

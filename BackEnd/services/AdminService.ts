@@ -1,35 +1,34 @@
 import Admin from "../models/Admin";
-import { AdminEmailLOgin,AdminPhoneLogin } from "../patterns/Strategy";
+import { Login } from "../patterns/Strategy";
+import { FactorRegistry, Strategy } from "../patterns/Factory";
 
 class AdminService {
     login(medium:String,password:String,strategy:string,callback:Function){
-        let loginStrategy: AdminEmailLOgin | AdminPhoneLogin;
-        if(strategy==="phone"){
-            loginStrategy = new AdminPhoneLogin();
-            const admin = new Admin("",medium,"",password,loginStrategy);
-            admin.login((err: Error | null, loggedInAdmin: Admin | null) => {
 
-                if (err) {
-                    callback(err, null);
-                    return;
-                }
+        //Factory pattern - the registry hands back a factory, the factory builds the strategy.
+        FactorRegistry.finalizeFactories();
+        const key = Strategy[strategy as keyof typeof Strategy];
+        const factory = FactorRegistry.getInstance().getFactory(key);
 
-                callback(null, loggedInAdmin);
-            });
-        }else{
-            loginStrategy = new AdminEmailLOgin();
-            const admin = new Admin("","",medium,password,loginStrategy);
-            admin.login((err: Error | null, loggedInAdmin: Admin | null) => {
-
-                if (err) {
-                    callback(err, null);
-                    return;
-                }
-
-                callback(null, loggedInAdmin);
-            });
+        if(!factory){
+            callback(new Error("Invalid login strategy"),null);
+            return;
         }
-        
+
+        const loginStrategy:Login = factory.createLogin();
+
+        //medium fills both slots - each strategy reads only the field it queries on.
+        const admin = new Admin("",medium,medium,password,loginStrategy);
+
+        admin.login((err: Error | null, loggedInAdmin: Admin | null) => {
+
+            if (err) {
+                callback(err, null);
+                return;
+            }
+
+            callback(null, loggedInAdmin);
+        });
     }
 }
 

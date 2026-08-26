@@ -17,6 +17,29 @@ class BookingController {
             })
         })
     }
+     getBookings(req:Request,res:Response){
+        const user_id = req.params.id;
+        BookingService.getBookings(Number(user_id),(err:Error,result:any) => {
+            if(err){
+                res.status(500).json({
+                    message: "Could not load bookings"
+                })
+                return
+            }
+            res.json(result);
+        })
+    }
+    getAllBookings(req:Request,res:Response){
+        BookingService.getAllBookings((err:Error,result:any) => {
+            if(err){
+                res.status(500).json({
+                    message: "Could not load bookings"
+                })
+                return
+            }
+            res.json(result);
+        })
+    }
     verifyBooking(req:Request,res:Response){
         const {user_id,id} = req.body;
         BookingService.verifyBooking(Number(user_id),Number(id),(err:Error,result:any) => {

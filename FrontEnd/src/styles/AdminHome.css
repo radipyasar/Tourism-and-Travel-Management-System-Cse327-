@@ -67,22 +67,18 @@
     background: #34495e;
 }
 
-/* Manage Package */
-
-.manage-package {
-    background: #6b705c;
-}
-
 /* Customer Bookings */
 
 .customer-bookings {
     background: #3d5a5b;
 }
 
-/* Add New Resource */
+/* Add New Resource - fills the whole bottom row */
 
 .add-resource {
     background: #8a7967;
+
+    grid-column: 1 / -1;
 }
 
 /* Hover */
@@ -108,9 +104,13 @@
 
     .admin-home-page {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
 
         overflow-y: auto;
+    }
+
+    .add-resource {
+        grid-column: auto;
     }
 
     .admin-icon {

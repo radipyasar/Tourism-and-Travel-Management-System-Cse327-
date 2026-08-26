@@ -40,6 +40,35 @@ class BookingService {
             });
         });
     }
+     getBookings(user_id:number,callback:Function){
+
+        if(!user_id){
+            callback(new Error("User id is required"),null);
+            return;
+        }
+
+        SimpleBooking.getByUserId(user_id,(err:Error|null,bookings:any[]) => {
+
+            if(err){
+                callback(err,null);
+                return;
+            }
+
+            callback(null,bookings);
+        });
+    }
+     getAllBookings(callback:Function){
+
+        SimpleBooking.getAll((err:Error|null,bookings:any[]) => {
+
+            if(err){
+                callback(err,null);
+                return;
+            }
+
+            callback(null,bookings);
+        });
+    }
     verifyBooking(user_id:number,id:number,callback:Function){
         const booking = new SimpleBooking(user_id,id,"",0);
         booking.verifyBooking((err:Error,result:any)=> {

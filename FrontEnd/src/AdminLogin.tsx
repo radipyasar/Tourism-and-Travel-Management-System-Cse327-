@@ -6,7 +6,7 @@ function AdminLogin() {
 
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const strategy:string = "email";
+    const strategy:string = "aemail";
 
     const navigate = useNavigate();
 

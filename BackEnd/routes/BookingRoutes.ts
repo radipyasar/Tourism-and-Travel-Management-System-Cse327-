@@ -11,4 +11,13 @@ router.post("/booking",(req:Request,res:Response) => {
     BookingController.createBooking(req,res);
 })
 
+
+router.get("/bookings/:id",(req:Request,res:Response) => {
+    BookingController.getBookings(req,res);
+})
+
+router.get("/bookings",(req:Request,res:Response) => {
+    BookingController.getAllBookings(req,res);
+})
+
 export default router;

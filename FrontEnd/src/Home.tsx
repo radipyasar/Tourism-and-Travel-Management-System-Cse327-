@@ -13,9 +13,9 @@ function Home() {
                 <span>Travel Packages</span>
             </button>
 
-            <button className="package-reviews">
+            <button className="package-reviews" onClick={() => navigate("/MyBookings")}>
                 ⭐
-                <span>Package Reviews</span>
+                <span>My Bookings</span>
             </button>
 
             <button className="edit-profile" onClick={() => navigate("/EditProfile")}>

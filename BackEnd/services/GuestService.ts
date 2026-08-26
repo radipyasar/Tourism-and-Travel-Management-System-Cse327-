@@ -1,5 +1,6 @@
 import User from "../models/User";
-import {Login,EmailLogin,PhoneLogin} from "../patterns/Strategy";
+import {Login,EmailLogin} from "../patterns/Strategy";
+import { FactorRegistry, Strategy } from "../patterns/Factory";
 import { adminSubject } from "../patterns/Observer";
 
 class GuestService {
@@ -50,33 +51,31 @@ class GuestService {
         });
     }
     login(medium:String,password:String,strategy:String,callback:Function){
-        let loginStrategy:EmailLogin | PhoneLogin;
-        if(strategy==="phone"){
-            loginStrategy = new PhoneLogin();
-            const user: User = new User("",medium,"",password,loginStrategy);
-            user.login((err: Error | null, loggedInUser: User | null) => {
 
-            if (err) {
-                callback(err, null);
-                return;
-            }
+        //Factory pattern - the registry hands back a factory, the factory builds the strategy.
+        FactorRegistry.finalizeFactories();
+        const key = Strategy[String(strategy) as keyof typeof Strategy];
+        const factory = FactorRegistry.getInstance().getFactory(key);
 
-            callback(null, loggedInUser);
-          });
-        }else{
-            loginStrategy = new EmailLogin();
-            const user: User = new User("","",medium,password,loginStrategy);
-            user.login((err: Error | null, loggedInUser: User | null) => {
-
-            if (err) {
-                callback(err, null);
-                return;
-            }
-
-            callback(null, loggedInUser);
-          });
+        if(!factory){
+            callback(new Error("Invalid login strategy"),null);
+            return;
         }
-        
+
+        const loginStrategy:Login = factory.createLogin();
+
+        //medium fills both slots - each strategy reads only the field it queries on.
+        const user:User = new User("",medium,medium,password,loginStrategy);
+
+        user.login((err: Error | null, loggedInUser: User | null) => {
+
+            if (err) {
+                callback(err, null);
+                return;
+            }
+
+            callback(null, loggedInUser);
+        });
     }
 }
 
