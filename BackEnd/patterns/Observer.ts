@@ -35,6 +35,7 @@ export class UserObserver implements Observer {
 //creating a package are two different requests.
 export class AdminSubject {
 
+    //User subscribing to the admin
     public addObserver(user_id:number,callback:Function):void{
         Subscriber.add(user_id,callback);
     }

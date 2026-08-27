@@ -25,7 +25,7 @@ export class GuideAddedBooking extends BookingDecorator {
                 return;
             }
 
-            //Then add the guide to the row that was just inserted.
+            //Then add the guide to the row that was just inserted.(additional feature)
             const db = Database.getInstance().getConnection();
             const sql:string = "UPDATE booking SET guide = TRUE WHERE booking_id = ?";
 
