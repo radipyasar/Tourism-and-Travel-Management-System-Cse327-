@@ -6,8 +6,8 @@ function CreatePackage() {
 
     const navigate = useNavigate();
 
-    const [cities, setCities] = useState<string[]>([]);
-    const [hotels, setHotels] = useState<string[]>([]);
+    const [cities, setCities] = useState<{ city: string; country: string }[]>([]);
+    const [hotels, setHotels] = useState<{ hotel_name: string; city: string }[]>([]);
     const [transportations, setTransportations] = useState<{ type: string; company: string }[]>([]);
 
     const [destination, setDestination] = useState("");
@@ -112,8 +112,10 @@ function CreatePackage() {
                         >
                             <option value="">Select destination</option>
 
-                            {cities.map((city) => (
-                                <option key={city} value={city}>{city}</option>
+                            {cities.map((item) => (
+                                <option key={item.city} value={item.city}>
+                                    {item.city} ({item.country})
+                                </option>
                             ))}
                         </select>
                     </div>
@@ -128,8 +130,10 @@ function CreatePackage() {
                         >
                             <option value="">Select hotel</option>
 
-                            {hotels.map((hotelName) => (
-                                <option key={hotelName} value={hotelName}>{hotelName}</option>
+                            {hotels.map((item) => (
+                                <option key={item.hotel_name} value={item.hotel_name}>
+                                    {item.hotel_name} ({item.city})
+                                </option>
                             ))}
                         </select>
                     </div>

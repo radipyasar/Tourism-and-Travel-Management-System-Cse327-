@@ -22,14 +22,17 @@ export class Destination {
     }
     static getAllCities(callback:Function){
         const db = Database.getInstance().getConnection();
-        const sql:string = "SELECT city FROM destination";
+        const sql:string = "SELECT city,country FROM destination";
         db.query(sql,(err,result) => {
             if(err){
                  callback(err,null);
                  return;
               }
             const rows = result as RowDataPacket[];
-            callback(null, rows.map((row) => row.city as string));
+            callback(null, rows.map((row) => ({
+                city: row.city as string,
+                country: row.country as string
+            })));
         })
     }
     addDestination(callback:Function){

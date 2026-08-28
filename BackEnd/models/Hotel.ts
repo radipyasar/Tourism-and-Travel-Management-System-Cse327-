@@ -22,14 +22,17 @@ export class Hotel {
     }
     static getAllHotelNames(callback:Function){
         const db = Database.getInstance().getConnection();
-        const sql:string = "SELECT hotel_name FROM hotel";
+        const sql:string = "SELECT hotel_name,city FROM hotel";
         db.query(sql,(err,result) => {
             if(err){
                  callback(err,null);
                  return;
               }
             const rows = result as RowDataPacket[];
-            callback(null, rows.map((row) => row.hotel_name as string));
+            callback(null, rows.map((row) => ({
+                hotel_name: row.hotel_name as string,
+                city: row.city as string
+            })));
         })
     }
     //Needed for package creation

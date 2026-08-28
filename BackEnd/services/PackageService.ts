@@ -73,14 +73,14 @@ class PackageService {
     }
 
     getPackageOptions(callback:Function){
-        Destination.getAllCities((err: Error | null, cities: string[]) => {
+        Destination.getAllCities((err: Error | null, cities: {city:string,country:string}[]) => {
 
             if (err) {
                 callback(err, null);
                 return;
             }
 
-            Hotel.getAllHotelNames((err: Error | null, hotels: string[]) => {
+            Hotel.getAllHotelNames((err: Error | null, hotels: {hotel_name:string,city:string}[]) => {
 
                 if (err) {
                     callback(err, null);

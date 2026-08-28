@@ -10,9 +10,14 @@
 
 .updates-page {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
 
-    padding: 30px 20px 40px;
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    padding: 30px 20px 30px;
 
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
 
@@ -24,6 +29,8 @@
 /* Header */
 
 .updates-header {
+    flex-shrink: 0;
+
     text-align: center;
     margin-bottom: 28px;
 }
@@ -51,7 +58,7 @@
     color: rgba(255, 255, 255, 0.8);
 }
 
-/* List */
+/* Scrollable List */
 
 .updates-list {
     display: flex;
@@ -59,9 +66,46 @@
 
     gap: 16px;
 
+    width: 100%;
     max-width: 700px;
 
     margin: 0 auto;
+
+    /* take the leftover height and scroll inside it */
+
+    flex: 1;
+    min-height: 0;
+
+    overflow-y: auto;
+
+    padding: 6px 14px 6px 6px;
+
+    /* Firefox */
+
+    scrollbar-width: thin;
+    scrollbar-color: #00c6ff rgba(255, 255, 255, 0.08);
+}
+
+/* Chrome / Edge scrollbar */
+
+.updates-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.updates-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.08);
+
+    border-radius: 10px;
+}
+
+.updates-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+
+    border-radius: 10px;
+}
+
+.updates-list::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #33d2ff, #338eff);
 }
 
 /* Card */
@@ -69,6 +113,8 @@
 .update-card {
     display: flex;
     align-items: center;
+
+    flex-shrink: 0;
 
     gap: 14px;
 
@@ -135,11 +181,13 @@
 .updates-back-button {
     display: block;
 
+    flex-shrink: 0;
+
     width: 220px;
 
     padding: 11px;
 
-    margin: 32px auto 0;
+    margin: 24px auto 0;
 
     border: 2px solid #00c6ff;
     border-radius: 10px;
